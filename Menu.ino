@@ -7,8 +7,10 @@ char* menu [] = {"Start Padrao", "Menu"};
 char* optionSubMenu [] = {"Start", "Velocidade", "Ciclos", "Altura", "Tempo", "Padrao", "Voltar"};
 char* padroes [] = {"Padrão 1",  "Padrão 2", "Padrão 3"};
 char* beckers [] = {"Becker 1",  "Becker 2", "Becker 3" , "Becker 4"};
+int variavel [] = {1, 2, 3, 4, 5,6,7};
+int opt;
 
-String readOption = "Start Padrao",variavel = " ";
+String readOption = "Start Padrao";
 
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd (2, 3, 4, 5, 6, 7);
@@ -110,8 +112,8 @@ void Submenu(bool voltar){
         Serial.print("Linha 1: ");
         Serial.println(option);
 
-        //verifica qual o~pção escolhida na primeira linha do menu
-		    variavel = optionSubMenu[option];
+        //verifica qual opção escolhida na primeira linha do menu
+		     opt = variavel[option];
 
           if(option <= 5){           
            option++;             
@@ -123,39 +125,39 @@ void Submenu(bool voltar){
       //verifica em qual opcao setada no cursor (primeira linha) e entra na função
       else if(tecla_pressionada == '5'){ 
         
-        switch (variavel) {
+        switch (opt) {
 
-          case Start:
-          Start();
+          case 1:
+          funcStart();
           delay(50);
           break;
 
-          case Velocidade:
-          Velocidade();
+          case 2:
+          funcVelocidade();
           delay(50);
           break;
 
-          case Ciclos:
-          Ciclos();
+          case 3:
+          funcCiclos();
           delay(50);
           break;
 
-          case Altura:
-          Altura();
+          case 4:
+          funcAltura();
           delay(50);
           break;
 
-          case Tempo:
-          Tempo();
+          case 5:
+          funcTempo();
           delay(50);
           break;
 
-          case Padrao:
-          Padrao();
+          case 6:
+          funcPadrao();
           delay(50);
           break;
 
-          case voltar:
+          case 7:
           voltar = true;
           delay(50);
           break;
@@ -163,11 +165,6 @@ void Submenu(bool voltar){
         default:
           Serial.println("Opcao invalida");
       }
-
-
-
-
-
         /*
          Serial.println(optionSubMenu[option]);        
         if(variavel.equals(optionSubMenu[option])){		//melhorar a saida do menu... 
@@ -187,36 +184,27 @@ void Submenu(bool voltar){
   }
 }
 
-void Start(){
+void funcStart(){
   Serial.print("Inicia a função START");
   //código para inicializar
 }
-void Velocidade(){
+void funcVelocidade(){
   Serial.print("Inicia a função VELOCIDADE");
   //código para ajuste de velocidade de subida
 }
-void Ciclos(){
+void funcCiclos(){
   Serial.print("Inicia a função CICLOS");
   //código para ajuste de ciclos (quantos beckeres vai estar na mesa?)
 }
-void Altura(){
+void funcAltura(){
   Serial.print("Inicia a função ALTURA");
   //código para ajusta de altura de subida e mergulho na solução
 }
-void Tempo(){
+void funcTempo(){
   Serial.print("Inicia a função TEMPO");
   //código para setar o tempo de exposição em cada solução
 }
-void Padrao(){
+void funcPadrao(){
   Serial.print("Inicia a função PADRAO");
   //código para setar os diferentes tipos de padrões pre configurados (3 padrões)
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
